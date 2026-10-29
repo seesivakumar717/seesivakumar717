@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08090C"/>
+      <stop offset="100%" stop-color="#111318"/>
+    </linearGradient>
+
+    <!-- Radar sweep gradient -->
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Sweep cone -->
+    <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.0"/>
+      <stop offset="60%" stop-color="#EF4444" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <!-- Node pulse mask -->
+    <clipPath id="radarClip">
+      <circle cx="140" cy="140" r="108"/>
+    </clipPath>
+
+    <!-- Title glow filter -->
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#292D35" stroke-width="0.4" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="900" height="280" fill="url(#bg)"/>
+  <rect width="900" height="280" fill="url(#grid)" opacity="0.55"/>
+
+  <!-- ── LEFT RADAR PANEL ── -->
+  <!-- Radar background fill -->
+  <circle cx="140" cy="140" r="108" fill="#0D0F14" stroke="#292D35" stroke-width="1.2"/>
+
+  <!-- Radar rings -->
+  <circle cx="140" cy="140" r="81"  fill="none" stroke="#1E2229" stroke-width="0.8"/>
+  <circle cx="140" cy="140" r="54"  fill="none" stroke="#1E2229" stroke-width="0.8"/>
+  <circle cx="140" cy="140" r="27"  fill="none" stroke="#1E2229" stroke-width="0.8"/>
+
+  <!-- Radar crosshair lines -->
+  <line x1="140" y1="32"  x2="140" y2="248" stroke="#1E2229" stroke-width="0.7"/>
+  <line x1="32"  y1="140" x2="248" y2="140" stroke="#1E2229" stroke-width="0.7"/>
+  <line x1="64"  y1="64"  x2="216" y2="216" stroke="#1E2229" stroke-width="0.5"/>
+  <line x1="216" y1="64"  x2="64"  y2="216" stroke="#1E2229" stroke-width="0.5"/>
+
+  <!-- Radar sweep (rotating sector) -->
+  <g clip-path="url(#radarClip)">
+    <g transform-origin="140 140">
+      <path d="M 140 140 L 248 140 A 108 108 0 0 0 215 64 Z" fill="url(#sweepGrad)" opacity="0.85">
+        <animateTransform attributeName="transform" type="rotate" from="0 140 140" to="360 140 140" dur="4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+
+  <!-- Sweep trailing glow -->
+  <circle cx="140" cy="140" r="108" fill="url(#radarGlow)" opacity="0.4">
+  </circle>
+
+  <!-- Static detected "blips" -->
+  <circle cx="175" cy="98"  r="2.5" fill="#EF4444" opacity="0.9"/>
+  <circle cx="175" cy="98"  r="6"   fill="#EF4444" opacity="0.2"/>
+  <circle cx="110" cy="165" r="2"   fill="#FF7373" opacity="0.8"/>
+  <circle cx="110" cy="165" r="5"   fill="#FF7373" opacity="0.15"/>
+  <circle cx="192" cy="155" r="1.8" fill="#EF4444" opacity="0.7"/>
+  <circle cx="88"  cy="115" r="1.5" fill="#9CA3AF" opacity="0.6"/>
+
+  <!-- Radar center dot -->
+  <circle cx="140" cy="140" r="3" fill="#EF4444"/>
+
+  <!-- RADAR label -->
+  <text x="140" y="265" text-anchor="middle" font-family="monospace" font-size="8" fill="#9CA3AF" letter-spacing="3">THREAT RADAR</text>
+
+  <!-- ── RIGHT: TITLE AND DETAILS PANEL ── -->
+
+  <!-- Vertical accent bar -->
+  <rect x="290" y="48" width="2" height="168" fill="#EF4444" rx="1"/>
+
+  <!-- Main name/title text -->
+  <text x="310" y="88" font-family="'Courier New', monospace" font-size="11" fill="#9CA3AF" letter-spacing="2">SECURITY ENGINEERING WORKBENCH</text>
+
+  <!-- Primary title — replace [YOUR NAME] -->
+  <text x="308" y="138" font-family="'Courier New', monospace" font-size="38" font-weight="bold" fill="#F3F4F6" letter-spacing="0" filter="url(#textGlow)">[YOUR NAME]</text>
+
+  <!-- Tagline — replace as needed -->
+  <text x="310" y="166" font-family="'Courier New', monospace" font-size="13" fill="#EF4444" letter-spacing="1.5">Cybersecurity Engineering  ·  Threat Detection  ·  AppSec</text>
+
+  <!-- Divider -->
+  <line x1="308" y1="182" x2="870" y2="182" stroke="#292D35" stroke-width="1"/>
+
+  <!-- Status badges row -->
+  <rect x="308" y="194" width="110" height="22" rx="3" fill="#1A1D24" stroke="#292D35" stroke-width="0.8"/>
+  <circle cx="320" cy="205" r="4" fill="#22C55E"/>
+  <text x="330" y="209" font-family="monospace" font-size="9" fill="#9CA3AF" letter-spacing="0.5">OPEN TO WORK</text>
+
+  <rect x="430" y="194" width="120" height="22" rx="3" fill="#1A1D24" stroke="#292D35" stroke-width="0.8"/>
+  <circle cx="442" cy="205" r="3.5" fill="#EF4444"/>
+  <text x="452" y="209" font-family="monospace" font-size="9" fill="#9CA3AF" letter-spacing="0.5">SYSTEMS ONLINE</text>
+
+  <rect x="562" y="194" width="130" height="22" rx="3" fill="#1A1D24" stroke="#292D35" stroke-width="0.8"/>
+  <circle cx="574" cy="205" r="3.5" fill="#3B82F6"/>
+  <text x="584" y="209" font-family="monospace" font-size="9" fill="#9CA3AF" letter-spacing="0.5">THM · HackTheBox</text>
+
+  <!-- Network connection lines (decorative right panel) -->
+  <g opacity="0.18" stroke="#EF4444" stroke-width="0.6">
+    <line x1="820" y1="30"  x2="870" y2="55"/>
+    <line x1="870" y1="55"  x2="850" y2="100"/>
+    <line x1="850" y1="100" x2="880" y2="140"/>
+    <line x1="820" y1="30"  x2="790" y2="70"/>
+    <line x1="790" y1="70"  x2="830" y2="110"/>
+  </g>
+  <circle cx="820" cy="30"  r="2.5" fill="#EF4444" opacity="0.3"/>
+  <circle cx="870" cy="55"  r="2"   fill="#9CA3AF" opacity="0.3"/>
+  <circle cx="850" cy="100" r="2"   fill="#EF4444" opacity="0.25"/>
+  <circle cx="880" cy="140" r="2.5" fill="#9CA3AF" opacity="0.25"/>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="276" width="900" height="4" fill="#EF4444" rx="0" opacity="0.6"/>
+
+  <!-- Subtle top border -->
+  <rect x="0" y="0" width="900" height="2" fill="#292D35"/>
+
+  <!-- Version/build label -->
+  <text x="880" y="272" text-anchor="end" font-family="monospace" font-size="7" fill="#292D35" letter-spacing="1">CYBER//OPS v1.0</text>
+</svg>
